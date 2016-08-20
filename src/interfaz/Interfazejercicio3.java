@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jesus
@@ -16,6 +18,7 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
      */
     public Interfazejercicio3() {
         initComponents();
+        txtSaldof.setEditable(false);
     }
 
     /**
@@ -55,6 +58,11 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
         cmdCalcular.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         cmdCalcular.setForeground(new java.awt.Color(0, 102, 0));
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
@@ -63,6 +71,11 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
         txtSaldo1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        txtSaldo1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSaldo1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtSaldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 90, -1));
 
         txtSaldof.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
@@ -82,6 +95,40 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String res1;
+        double n1,porc,suma=0;
+        if (txtSaldo1.getText().trim().isEmpty() ){
+            JOptionPane.showMessageDialog(this,"Digite La cantidad Ahorrada 1","Error", JOptionPane.ERROR_MESSAGE);
+            txtSaldo1.requestFocusInWindow(); 
+        }else{
+         try {
+           n1 = Double.parseDouble(txtSaldo1.getText()); 
+           porc=(n1*1.5)/100;
+           suma=porc+n1;
+         }
+           catch (Exception e){
+               JOptionPane.showMessageDialog(this,"Ingrese numero validos","Erro", JOptionPane.ERROR_MESSAGE);
+            txtSaldo1.requestFocusInWindow();
+           } 
+        }
+        res1= String.valueOf(suma);
+        txtSaldof.setText(res1);
+        
+        
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void txtSaldo1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSaldo1KeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='.'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtSaldo1KeyTyped
 
     /**
      * @param args the command line arguments
