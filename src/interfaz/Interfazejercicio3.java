@@ -68,6 +68,11 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         cmdBorrar.setForeground(new java.awt.Color(153, 0, 0));
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
         txtSaldo1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
@@ -114,7 +119,7 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
            } 
         }
         res1= String.valueOf(suma);
-        txtSaldof.setText(res1);
+        txtSaldof.setText(res1+"$");
         
         
     }//GEN-LAST:event_cmdCalcularActionPerformed
@@ -129,6 +134,12 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
               evt.consume(); 
           }
     }//GEN-LAST:event_txtSaldo1KeyTyped
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtSaldo1.setText("");
+        txtSaldof.setText("");
+        txtSaldo1.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
