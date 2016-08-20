@@ -119,7 +119,7 @@ public class Interfazejercicio3 extends javax.swing.JFrame {
            } 
         }
         res1= String.valueOf(suma);
-        txtSaldof.setText(res1+"$");
+        txtSaldof.setText(res1+ "$");
         
         
     }//GEN-LAST:event_cmdCalcularActionPerformed
